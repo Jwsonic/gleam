@@ -82,7 +82,7 @@ fn command_build(root: String) {
             .for_each(|p| collect_source(p.join("src"), ModuleOrigin::Src, &mut srcs));
     }
 
-    collect_source(root_path.join("src"), ModuleOrigin::Src, &mut srcs);
+    collect_source(root_path.join("lib"), ModuleOrigin::Src, &mut srcs);
     collect_source(root_path.join("test"), ModuleOrigin::Test, &mut srcs);
 
     let compiled = match crate::project::compile(srcs) {

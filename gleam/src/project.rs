@@ -31,7 +31,7 @@ pub enum ModuleOrigin {
 impl ModuleOrigin {
     pub fn dir_name(&self) -> &'static str {
         match self {
-            ModuleOrigin::Src => "src",
+            ModuleOrigin::Src => "lib",
             ModuleOrigin::Test => "test",
         }
     }
@@ -639,7 +639,7 @@ pub fn compile(srcs: Vec<Input>) -> Result<Vec<Compiled>, Error> {
             let path = base_path
                 .parent()
                 .unwrap()
-                .join("gen")
+                .join("_build_gleam")
                 .join(origin.dir_name())
                 .join(format!("{}.erl", module.name.join("@")));
             let code = crate::erl::module(module);
